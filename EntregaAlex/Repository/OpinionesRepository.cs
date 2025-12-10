@@ -76,29 +76,30 @@ namespace EntregaAlex.Repository
         }
 
         public async Task<Opiniones> CreateAsync(Opiniones opiniones)
+{
+    using (var connection = new MySqlConnection(_connectionString))
+    {
+        await connection.OpenAsync();
+
+      
+        string query = @"INSERT INTO Opiniones (NombreCompleto, FechaCreacion, Puntuacion, Mensaje, EventoId) 
+                         VALUES (@NombreCompleto, @FechaCreacion, @Puntuacion, @Mensaje, @EventoId);
+                         SELECT LAST_INSERT_ID();";
+
+        using (var command = new MySqlCommand(query, connection))
         {
-            using (var connection = new MySqlConnection(_connectionString))
-            {
-                await connection.OpenAsync();
+            command.Parameters.AddWithValue("@NombreCompleto", opiniones.NombreCompleto);
+            command.Parameters.AddWithValue("@FechaCreacion", opiniones.FechaCreacion);
+            command.Parameters.AddWithValue("@Puntuacion", opiniones.Puntuacion);
+            command.Parameters.AddWithValue("@Mensaje", opiniones.Mensaje);
+            command.Parameters.AddWithValue("@EventoId", opiniones.EventoId); // <--- NUEVO
 
-                string query = @"INSERT INTO Opiniones (Id, NombreCompleto, FechaCreacion, Puntuacion, Mensaje) 
-                                 VALUES (@NombreCompleto, @FechaCreacion, @Puntuacion, @Mensaje);
-                                 SELECT LAST_INSERT_ID();";
-
-                using (var command = new MySqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@NombreCompleto", opiniones.NombreCompleto);
-                    command.Parameters.AddWithValue("@FechaCreacion", opiniones.FechaCreacion);
-                    command.Parameters.AddWithValue("@Puntuacion", opiniones.Puntuacion);
-                    command.Parameters.AddWithValue("@Mensaje", opiniones.Mensaje);
-                   
-
-                    var id = await command.ExecuteScalarAsync();
-                    if (id != null) opiniones.Id = Convert.ToInt32(id);
-                }
-            }
-            return opiniones;
+            var id = await command.ExecuteScalarAsync();
+            if (id != null) opiniones.Id = Convert.ToInt32(id);
         }
+    }
+    return opiniones;
+}
 
         public async Task<Opiniones?> UpdateAsync(Opiniones opiniones)
         {

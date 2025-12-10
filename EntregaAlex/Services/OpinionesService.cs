@@ -42,26 +42,28 @@ namespace EntregaAlex.Services
         }
 
         public async Task<OpinionesResponseDto> CreateAsync(OpinionesRequestDto request)
-        {
-            var nuevo = new Opiniones
-            {
-                NombreCompleto = request.NombreCompleto,
-                FechaCreacion = DateTime.Now,
-                Puntuacion = request.Puntuacion,
-                Mensaje = request.Mensaje,
-            };
+{
+    var nuevo = new Opiniones
+    {
+        NombreCompleto = request.NombreCompleto,
+        FechaCreacion = DateTime.Now, 
+        Puntuacion = request.Puntuacion,
+        Mensaje = request.Mensaje,
+        EventoId = request.EventoId 
+    };
 
-            var creado = await _repository.CreateAsync(nuevo);
+    var creado = await _repository.CreateAsync(nuevo);
 
-            return new OpinionesResponseDto
-            {
-                Id = creado.Id,
-                NombreCompleto = creado.NombreCompleto,
-                FechaCreacion = creado.FechaCreacion,
-                Puntuacion = creado.Puntuacion,
-                Mensaje = creado.Mensaje,
-            };
-        }
+    return new OpinionesResponseDto
+    {
+        Id = creado.Id,
+        NombreCompleto = creado.NombreCompleto,
+        FechaCreacion = creado.FechaCreacion,
+        Puntuacion = creado.Puntuacion,
+        Mensaje = creado.Mensaje,
+        EventoId = creado.EventoId 
+    };
+}
 
         public async Task<OpinionesResponseDto?> UpdateAsync(int id, OpinionesRequestDto request)
         {

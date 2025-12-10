@@ -18,15 +18,11 @@ namespace EntregaAlex.Models
         public int Puntuacion { get; set; } 
         
         [Required(ErrorMessage = "No puedes dejar le campo vacio")]
-         public string Mensaje { get; set; } = string.Empty;
+        public string Mensaje { get; set; } = string.Empty;
 
+        public int EventoId { get; set; }
 
-
-
-    
-
-        // RELACIONES
         [JsonIgnore]
-        public List<Evento>? Eventos { get; set; }
+        public Evento? Evento { get; set; } 
     }
 }
