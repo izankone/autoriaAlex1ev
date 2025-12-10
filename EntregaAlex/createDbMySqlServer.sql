@@ -1,6 +1,5 @@
 /*******************************************************************************
-   Creación de Base de Datos para Moda Lujo (Simplificada)
-   NOTA: Se han eliminado ValorMercadoMillones y FechaAlianza
+   Creación de Base de Datos para Moda Lujo (CORREGIDA)
 ********************************************************************************/
 
 -- 1. PREPARACIÓN
@@ -18,7 +17,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 -- --------------------------------------------------------
 
--- 2. TABLA MARCAS (Simplificada)
+-- 2. TABLA MARCAS
 CREATE TABLE Marcas (
     Id INT AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(50) NOT NULL,
@@ -84,14 +83,12 @@ CREATE TABLE Opiniones (
     NombreCompleto VARCHAR(50) NOT NULL,
     FechaCreacion DATETIME NOT NULL,
     Puntuacion INT NOT NULL,
-    Mensaje VARCHAR(200) NOT NULL,
+    Mensaje VARCHAR(200) NOT NULL
 );
 
--- --------------------------------------------------------
--- DATOS DE EJEMPLO
--- --------------------------------------------------------
 
--- 1. Marca: Versace (Sin los campos extra)
+
+-- 1. Marca
 INSERT INTO Marcas (Nombre, PaisOrigen, AnioFundacion, EsAltaCostura)
 VALUES ('Versace', 'Italia', 1978, 1);
 
@@ -111,6 +108,5 @@ VALUES ('Vestido de Noche', 'Seda', 38, 1200.50, 1, NOW(), 1);
 INSERT INTO Eventos (Ciudad, UbicacionExacta, CapacidadAsistentes, CosteEntrada, EsBenefico, FechaEvento, ColeccionId)
 VALUES ('Milan', 'Via Gesu 12', 500, 0.00, 0, NOW(), 1);
 
-
 INSERT INTO Opiniones (Id, NombreCompleto, FechaCreacion, Puntuacion, Mensaje)
-VALUES (1, 'Jesus Vallejo Ferrer', 12/12/2025, 5, 'El evento estuvo muy chulo cuando salieron efectos especiales tras la salida de Emilia Carlo');
+VALUES (1, 'Jesus Vallejo Ferrer', '2025-12-12', 5, 'El evento estuvo muy chulo cuando salieron efectos especiales tras la salida de Emilia Carlo');
