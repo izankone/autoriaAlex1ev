@@ -83,10 +83,10 @@ CREATE TABLE Opiniones (
     NombreCompleto VARCHAR(50) NOT NULL,
     FechaCreacion DATETIME NOT NULL,
     Puntuacion INT NOT NULL,
-    Mensaje VARCHAR(200) NOT NULL
+    Mensaje VARCHAR(200) NOT NULL,
+    EventoId INT NOT NULL,
+    CONSTRAINT fk_opinion_evento FOREIGN KEY (EventoId) REFERENCES Eventos(Id) ON DELETE CASCADE
 );
-
-
 
 -- 1. Marca
 INSERT INTO Marcas (Nombre, PaisOrigen, AnioFundacion, EsAltaCostura)
@@ -108,5 +108,5 @@ VALUES ('Vestido de Noche', 'Seda', 38, 1200.50, 1, NOW(), 1);
 INSERT INTO Eventos (Ciudad, UbicacionExacta, CapacidadAsistentes, CosteEntrada, EsBenefico, FechaEvento, ColeccionId)
 VALUES ('Milan', 'Via Gesu 12', 500, 0.00, 0, NOW(), 1);
 
-INSERT INTO Opiniones (Id, NombreCompleto, FechaCreacion, Puntuacion, Mensaje)
-VALUES (1, 'Jesus Vallejo Ferrer', '2025-12-12', 5, 'El evento estuvo muy chulo cuando salieron efectos especiales tras la salida de Emilia Carlo');
+INSERT INTO Opiniones (NombreCompleto, FechaCreacion, Puntuacion, Mensaje,EventoId)
+VALUES ('Jesus Vallejo Ferrer', '2025-12-12', 5, 'El evento estuvo muy chulo cuando salieron efectos especiales tras la salida de Emilia Carlo',1);
