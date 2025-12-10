@@ -1,0 +1,19 @@
+docker-compose down
+docker-compose up --build -d
+
+
+
+Tipo de red: MariaDB or MySQL (TCP/IP)
+
+Nombre del host / IP: 127.0.0.1 (o localhost)
+
+Usuario: root
+
+Contraseña: root
+
+Puerto: 6038 
+
+Base de datos: (Puedes dejarlo en blanco o escribir ModaLujoDB)
+
+
+http://localhost:8306/swagger
