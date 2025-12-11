@@ -27,7 +27,6 @@ namespace EntregaAlex.Dtos
         public DateTime FechaCreacion { get; set; }
         public int Puntuacion { get; set; } 
         public string Mensaje { get; set; } = string.Empty;
-        // Opcional: devolver también el ID
         public int EventoId { get; set; } 
     }
 }

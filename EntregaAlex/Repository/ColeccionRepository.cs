@@ -36,7 +36,7 @@ namespace EntregaAlex.Repository
                         {
                             Id = reader.GetInt32(0),
                             NombreColeccion = reader.GetString(1),
-                            Temporada = reader.GetString(2),
+                            Temporada = reader.IsDBNull(2) ? "Invierno" : reader.GetString(2),
                             NumeroPiezas = reader.GetInt32(3),
                             PresupuestoInversion = reader.GetDecimal(4),
                             EsLimitada = reader.GetBoolean(5),
@@ -70,7 +70,7 @@ namespace EntregaAlex.Repository
                             {
                                 Id = reader.GetInt32(0),
                                 NombreColeccion = reader.GetString(1),
-                                Temporada = reader.GetString(2),
+                                Temporada = reader.IsDBNull(2) ? "Invierno" : reader.GetString(2),
                                 NumeroPiezas = reader.GetInt32(3),
                                 PresupuestoInversion = reader.GetDecimal(4),
                                 EsLimitada = reader.GetBoolean(5),

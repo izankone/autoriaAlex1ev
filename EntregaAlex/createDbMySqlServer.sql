@@ -1,6 +1,4 @@
-/*******************************************************************************
-   Creación de Base de Datos para Moda Lujo (CORREGIDA)
-********************************************************************************/
+
 
 -- 1. PREPARACIÓN
 CREATE DATABASE IF NOT EXISTS ModaLujoDB;

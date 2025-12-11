@@ -16,4 +16,4 @@ Puerto: 6038
 Base de datos: (Puedes dejarlo en blanco o escribir ModaLujoDB)
 
 
-http://localhost:8306/swagger
+http://localhost:2786/swagger

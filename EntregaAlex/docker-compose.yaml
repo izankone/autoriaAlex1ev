@@ -26,7 +26,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       # Conexión limpia:
-      - ConnectionStrings__DefaultConnection=Server=moda-lujo-db;Port=3306;Database=ModaLujoDB;Uid=root;Pwd=root;
+      - ConnectionStrings__DefaultConnection=Server=moda-lujo-db;Port=2786;Database=ModaLujoDB;Uid=root;Pwd=root;
     depends_on:
       - moda-lujo-db
 

@@ -1,5 +1,5 @@
-using MySqlConnector;
 using EntregaAlex.Models;
+using MySqlConnector;
 using Microsoft.Extensions.Configuration;
 using System.Data;
 
@@ -20,9 +20,9 @@ namespace EntregaAlex.Repository
 
             using (var connection = new MySqlConnection(_connectionString))
             {
-                
                 await connection.OpenAsync();
-                string query = "SELECT Id, NombreCompleto, FechaCreacion, Puntuacion, Mensaje";
+                
+                string query = "SELECT Id, NombreCompleto, FechaCreacion, Puntuacion, Mensaje, EventoId FROM Opiniones";
 
                 using (var command = new MySqlCommand(query, connection))
                 using (var reader = await command.ExecuteReaderAsync())
@@ -36,6 +36,7 @@ namespace EntregaAlex.Repository
                             FechaCreacion = reader.GetDateTime(2),
                             Puntuacion = reader.GetInt32(3),
                             Mensaje = reader.GetString(4),
+                            EventoId = reader.GetInt32(5) 
                         });
                     }
                 }
@@ -51,7 +52,8 @@ namespace EntregaAlex.Repository
             using (var connection = new MySqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
-                string query = "SELECT Id, NombreCompleto, FechaCreacion, Puntuacion, Mensaje FROM Opiniones WHERE Id = @Id";
+                
+                string query = "SELECT Id, NombreCompleto, FechaCreacion, Puntuacion, Mensaje, EventoId FROM Opiniones WHERE Id = @Id";
 
                 using (var command = new MySqlCommand(query, connection))
                 {
@@ -67,6 +69,7 @@ namespace EntregaAlex.Repository
                                 FechaCreacion = reader.GetDateTime(2),
                                 Puntuacion = reader.GetInt32(3),
                                 Mensaje = reader.GetString(4),
+                                EventoId = reader.GetInt32(5) 
                             };
                         }
                     }
@@ -76,30 +79,29 @@ namespace EntregaAlex.Repository
         }
 
         public async Task<Opiniones> CreateAsync(Opiniones opiniones)
-{
-    using (var connection = new MySqlConnection(_connectionString))
-    {
-        await connection.OpenAsync();
-
-      
-        string query = @"INSERT INTO Opiniones (NombreCompleto, FechaCreacion, Puntuacion, Mensaje, EventoId) 
-                         VALUES (@NombreCompleto, @FechaCreacion, @Puntuacion, @Mensaje, @EventoId);
-                         SELECT LAST_INSERT_ID();";
-
-        using (var command = new MySqlCommand(query, connection))
         {
-            command.Parameters.AddWithValue("@NombreCompleto", opiniones.NombreCompleto);
-            command.Parameters.AddWithValue("@FechaCreacion", opiniones.FechaCreacion);
-            command.Parameters.AddWithValue("@Puntuacion", opiniones.Puntuacion);
-            command.Parameters.AddWithValue("@Mensaje", opiniones.Mensaje);
-            command.Parameters.AddWithValue("@EventoId", opiniones.EventoId); // <--- NUEVO
+            using (var connection = new MySqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
 
-            var id = await command.ExecuteScalarAsync();
-            if (id != null) opiniones.Id = Convert.ToInt32(id);
+                string query = @"INSERT INTO Opiniones (NombreCompleto, FechaCreacion, Puntuacion, Mensaje, EventoId) 
+                                 VALUES (@NombreCompleto, @FechaCreacion, @Puntuacion, @Mensaje, @EventoId);
+                                 SELECT LAST_INSERT_ID();";
+
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@NombreCompleto", opiniones.NombreCompleto);
+                    command.Parameters.AddWithValue("@FechaCreacion", opiniones.FechaCreacion);
+                    command.Parameters.AddWithValue("@Puntuacion", opiniones.Puntuacion);
+                    command.Parameters.AddWithValue("@Mensaje", opiniones.Mensaje);
+                    command.Parameters.AddWithValue("@EventoId", opiniones.EventoId);
+
+                    var id = await command.ExecuteScalarAsync();
+                    if (id != null) opiniones.Id = Convert.ToInt32(id);
+                }
+            }
+            return opiniones;
         }
-    }
-    return opiniones;
-}
 
         public async Task<Opiniones?> UpdateAsync(Opiniones opiniones)
         {
@@ -107,9 +109,10 @@ namespace EntregaAlex.Repository
             {
                 await connection.OpenAsync();
 
+                // CORREGIDO: Añadido EventoId en el UPDATE por si cambia de evento
                 string query = @"UPDATE Opiniones 
-                                 SET NombreCompleto=@NombreCompleto, FechaCreacion=@FechaCreacion, Puntuacion=@Puntuacion, 
-                                     Mensaje=@Mensaje 
+                                 SET NombreCompleto=@NombreCompleto, FechaCreacion=@FechaCreacion, 
+                                     Puntuacion=@Puntuacion, Mensaje=@Mensaje, EventoId=@EventoId 
                                  WHERE Id=@Id";
 
                 using (var command = new MySqlCommand(query, connection))
@@ -118,6 +121,8 @@ namespace EntregaAlex.Repository
                     command.Parameters.AddWithValue("@FechaCreacion", opiniones.FechaCreacion);
                     command.Parameters.AddWithValue("@Puntuacion", opiniones.Puntuacion);
                     command.Parameters.AddWithValue("@Mensaje", opiniones.Mensaje);
+                    command.Parameters.AddWithValue("@EventoId", opiniones.EventoId); // Nuevo parámetro
+                    command.Parameters.AddWithValue("@Id", opiniones.Id);
 
                     int filas = await command.ExecuteNonQueryAsync();
                     if (filas == 0) return null;

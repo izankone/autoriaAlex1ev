@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\izankone\\DesarrolloEntornoServidorALEX\\EntregaAlex-20251209T152119Z-3-001 (2)\\EntregaAlex-20251209T152119Z-3-001\\EntregaAlex\\EntregaAlex\\EntregaAlex.csproj": {}
+    "C:\\Users\\S2-PC00\\Documents\\GitHub\\autoriaAlex1ev\\EntregaAlex\\EntregaAlex.csproj": {}
   },
   "projects": {
-    "d:\\izankone\\DesarrolloEntornoServidorALEX\\EntregaAlex-20251209T152119Z-3-001 (2)\\EntregaAlex-20251209T152119Z-3-001\\EntregaAlex\\EntregaAlex\\EntregaAlex.csproj": {
+    "C:\\Users\\S2-PC00\\Documents\\GitHub\\autoriaAlex1ev\\EntregaAlex\\EntregaAlex.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\izankone\\DesarrolloEntornoServidorALEX\\EntregaAlex-20251209T152119Z-3-001 (2)\\EntregaAlex-20251209T152119Z-3-001\\EntregaAlex\\EntregaAlex\\EntregaAlex.csproj",
+        "projectUniqueName": "C:\\Users\\S2-PC00\\Documents\\GitHub\\autoriaAlex1ev\\EntregaAlex\\EntregaAlex.csproj",
         "projectName": "EntregaAlex",
-        "projectPath": "d:\\izankone\\DesarrolloEntornoServidorALEX\\EntregaAlex-20251209T152119Z-3-001 (2)\\EntregaAlex-20251209T152119Z-3-001\\EntregaAlex\\EntregaAlex\\EntregaAlex.csproj",
+        "projectPath": "C:\\Users\\S2-PC00\\Documents\\GitHub\\autoriaAlex1ev\\EntregaAlex\\EntregaAlex.csproj",
         "packagesPath": "C:\\Users\\S2-PC00\\.nuget\\packages\\",
-        "outputPath": "d:\\izankone\\DesarrolloEntornoServidorALEX\\EntregaAlex-20251209T152119Z-3-001 (2)\\EntregaAlex-20251209T152119Z-3-001\\EntregaAlex\\EntregaAlex\\obj\\",
+        "outputPath": "C:\\Users\\S2-PC00\\Documents\\GitHub\\autoriaAlex1ev\\EntregaAlex\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -17,7 +17,7 @@ namespace EntregaAlex.Models
         [Required(ErrorMessage = "La puntuacion debe de ser entre 1 y 5")]
         public int Puntuacion { get; set; } 
         
-        [Required(ErrorMessage = "No puedes dejar le campo vacio")]
+        [Required(ErrorMessage = "No puedes dejar el campo vacio")]
         public string Mensaje { get; set; } = string.Empty;
 
         public int EventoId { get; set; }

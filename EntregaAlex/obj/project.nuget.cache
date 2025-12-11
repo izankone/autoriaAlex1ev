@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hCcyTQLx5hQ=",
+  "dgSpecHash": "aimeX9GZmEY=",
   "success": true,
-  "projectFilePath": "d:\\izankone\\DesarrolloEntornoServidorALEX\\EntregaAlex-20251209T152119Z-3-001 (2)\\EntregaAlex-20251209T152119Z-3-001\\EntregaAlex\\EntregaAlex\\EntregaAlex.csproj",
+  "projectFilePath": "C:\\Users\\S2-PC00\\Documents\\GitHub\\autoriaAlex1ev\\EntregaAlex\\EntregaAlex.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\S2-PC00\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\S2-PC00\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
